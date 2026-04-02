@@ -1,0 +1,60 @@
+/* ── FILTER TABS ── */
+.filter-tabs {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  padding: 32px 0 0;
+}
+.filter-tab {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 20px; padding: .38em 1.2em;
+  font-family: var(--font-body); font-size: .83rem; font-weight: 500;
+  cursor: pointer; color: var(--muted); transition: all .2s;
+}
+.filter-tab:hover { border-color: var(--terracotta); color: var(--terracotta); }
+.filter-tab.active {
+  background: var(--terracotta); border-color: var(--terracotta);
+  color: #fff; box-shadow: 0 4px 12px rgba(196,98,45,.25);
+}
+
+/* ── DESTINATIONS GRID ── */
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.dest-item {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 0;
+  transition: all .25s; position: relative; overflow: hidden;
+}
+.dest-item::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--terracotta), var(--gold));
+  transform: scaleX(0); transform-origin: left; transition: transform .3s;
+}
+.dest-item:hover { box-shadow: var(--shadow-lg); transform: translateY(-5px); }
+.dest-item:hover::before { transform: scaleX(1); }
+
+.dest-item__emoji {
+  font-size: 2.6rem; width: 60px; height: 60px;
+  background: var(--cream-2); border-radius: var(--r-sm);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.dest-item__body { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.dest-item__meta { display: flex; gap: 8px; align-items: center; }
+.dest-item__region {
+  font-size: .66rem; text-transform: uppercase; letter-spacing: .1em;
+  font-weight: 600; color: var(--terracotta);
+}
+.dest-item__state  { font-size: .72rem; color: var(--muted); }
+.dest-item__name   { font-size: 1.2rem; color: var(--brown-dark); margin-bottom: 2px; }
+.dest-item__desc   { font-size: .84rem; color: var(--muted); line-height: 1.55; flex: 1; }
+.dest-item__tags   { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.dest-item__cta    { margin-top: 20px; align-self: flex-start; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .dest-grid { grid-template-columns: 1fr; }
+}
